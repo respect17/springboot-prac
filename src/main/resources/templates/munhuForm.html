@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Munhu Form</title>
+</head>
+
+<body>
+    <h1>Munhu Form</h1>
+    <form action="#" th:action="@{/submitMunhu}" th:object="${munhu}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" th:field="*{gender}">
+            <option value="" disabled selected>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
